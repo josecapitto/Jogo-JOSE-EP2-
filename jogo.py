@@ -32,7 +32,7 @@ opcoes_validas = ["A", "B", "C", "D", "ajuda", "pula"]
 ajuda_pula = ["ajuda", "pula"]
 ide = 1 
 
-while ide <= 3:
+while ide <= 9:
     dicio_nivel = funcoes.transforma_base(lista_quest)
     nova_questao = funcoes.sorteia_questao_inedita(dicio_nivel, nivel, lista_jaforam)
     formatacao_questao = funcoes.questao_para_texto(nova_questao, ide)
@@ -99,8 +99,18 @@ while ide <= 3:
                 print(f"Você acertou! Seu prêmio atual é de R$ {lista_dinheiro[ide - 1]:.2f}")
                 print("")
                 ide += 1 
+                if ide > 3 and ide < 6:
+                    nivel = 'medio'
+                    if ide == 4:
+                        print("HEY! Você passou para o nível MEDIO!")
+                if ide > 6:
+                    nivel = 'dificil'
+                    if ide == 7:
+                        print("HEY! Você passou para o nível DIFICIL!")
+                break
             elif resposta != resposta_correta:
                 print("Que pena! Você errou e vai sair sem nada :( ")
                 exit()
             enter = input("Aperte ENTER para continuar...")
 
+print("PARABÉNS, você zerou o jogo e ganhou um milhão de reais! ")
