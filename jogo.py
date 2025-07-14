@@ -75,7 +75,7 @@ while ide <= 3:
     elif resposta == 'ajuda' and ajudas == 0:
         print("Não deu! Você não tem mais direito a ajuda!")
         
-    if resposta == 'pula' and pulos > 0:
+    elif resposta == 'pula' and pulos > 0:
         pulos -= 1 
         if pulos >= 1:
             print(f"Ok, pulando! Você ainda tem {pulos} pulos!")
