@@ -25,10 +25,10 @@ lista_jaforam = []
 lista_quest = questoes.quest
 
 lista_dinheiro = [1000, 5000, 10000, 30000, 50000, 100000, 300000, 500000, 1000000] 
-lista_ajudas = [0] * 9 
+lista_ajudas = [0] * 10 
 pulos = 3 
 ajudas = 2 
-
+opcoes_validas = ["A", "B", "C", "D", "ajuda", "pula"]
 ide = 1 
 
 while ide <= 3:
@@ -46,6 +46,11 @@ while ide <= 3:
     resposta_correta = nova_questao['correta']
 
     resposta = input("Qual sua resposta?!")
+
+    while resposta not in opcoes_validas:
+        print("Opção inválida!")
+        print("As opções de resposta são ""A"", ""B"", ""C"", ""D"", ""ajuda"", ""pula"" e ""parar""! ")
+        resposta = input("Qual sua resposta?!")  
 
                          
     while resposta == 'pula' and pulos == 0:
@@ -66,16 +71,19 @@ while ide <= 3:
         print(formatacao_questao)
         resposta = input("Qual sua resposta?!")
 
-    elif resposta == 'ajuda' and ajudas > 0 and lista_ajudas[ide] == 1:
+    while resposta == 'ajuda' and ajudas > 0 and lista_ajudas[ide] == 1:
         print("Não deu! Você já pediu ajuda nesta questão!")
         enter = input("Aperte ENTER para continuar...")
         print(formatacao_questao)
         resposta = input("Qual sua resposta?!")
     
-    elif resposta == 'ajuda' and ajudas == 0:
+    while resposta == 'ajuda' and ajudas == 0:
         print("Não deu! Você não tem mais direito a ajuda!")
-        
-    elif resposta == 'pula' and pulos > 0:
+        enter = input("Aperte ENTER para continuar...")
+        print(formatacao_questao)
+        resposta = input("Qual sua resposta?!")
+
+    if resposta == 'pula' and pulos > 0:
         pulos -= 1 
         if pulos >= 1:
             print(f"Ok, pulando! Você ainda tem {pulos} pulos!")
@@ -115,6 +123,11 @@ while ide <= 6:
 
     resposta = input("Qual sua resposta?!")
 
+    while resposta not in opcoes_validas:
+        print("Opção inválida!")
+        print("As opções de resposta são ""A"", ""B"", ""C"", ""D"", ""ajuda"", ""pula"" e ""parar""! ")
+        resposta = input("Qual sua resposta?!")  
+
                          
     while resposta == 'pula' and pulos == 0:
         print("Não deu! Você não tem mais direito a pulos!")
@@ -134,14 +147,17 @@ while ide <= 6:
         print(formatacao_questao)
         resposta = input("Qual sua resposta?!")
 
-    elif resposta == 'ajuda' and ajudas > 0 and lista_ajudas[ide] == 1:
+    while resposta == 'ajuda' and ajudas > 0 and lista_ajudas[ide] == 1:
         print("Não deu! Você já pediu ajuda nesta questão!")
         enter = input("Aperte ENTER para continuar...")
         print(formatacao_questao)
         resposta = input("Qual sua resposta?!")
     
-    elif resposta == 'ajuda' and ajudas == 0:
+    while resposta == 'ajuda' and ajudas == 0:
         print("Não deu! Você não tem mais direito a ajuda!")
+        enter = input("Aperte ENTER para continuar...")
+        print(formatacao_questao)
+        resposta = input("Qual sua resposta?!")
         
     if resposta == 'pula' and pulos > 0:
         pulos -= 1 
