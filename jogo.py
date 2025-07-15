@@ -112,7 +112,17 @@ while ide <= 9:
                 break
             elif resposta != resposta_correta:
                 print(Fore.RED + "Que pena! Você errou e vai sair sem nada :( ")
-                exit()
+                continuar = input("Quer continuar?  s / n")
+                if continuar == "s":
+                    ide = 1 
+                    nivel = 'facil'
+                    lista_jaforam = []
+                    pulos = 3 
+                    ajudas = 2
+                    lista_ajudas = [0] * 10
+                    break
+                if continuar == "n":
+                    exit()
             enter = input("Aperte ENTER para continuar...")
 
 print("PARABÉNS, você zerou o jogo e ganhou um milhão de reais! ")
