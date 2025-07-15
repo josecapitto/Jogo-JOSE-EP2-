@@ -1,5 +1,7 @@
 import funcoes
 import questoes
+from colorama import Fore, Back, Style, init
+init()
 
 print("Olá! Você está na Fortuna DesSoft e terá a oportunidade de enriquecer!")
 
@@ -41,19 +43,19 @@ while ide <= 9:
     validacao = funcoes.valida_questao(nova_questao)
 
     if validacao != {}:
-        print("Questão inválida, encerra-se o programa então")
+        print(Fore.RED + "Questão inválida, encerra-se o programa então")
         exit()
     while True:
-        print(formatacao_questao)
+        print(Fore.GREEN + formatacao_questao)
 
         resposta_correta = nova_questao['correta']
 
-        resposta = input("Qual sua resposta?!")
+        resposta = input(Fore.BLUE + "Qual sua resposta?!")
 
         while resposta not in opcoes_validas:
-            print("Opção inválida!")
-            print("As opções de resposta são ""A"", ""B"", ""C"", ""D"", ""ajuda"", ""pula"" e ""parar""! ")
-            resposta = input("Qual sua resposta?!")  
+            print(Fore.RED + "Opção inválida!")
+            print(Fore.LIGHTYELLOW_EX + "As opções de resposta são ""A"", ""B"", ""C"", ""D"", ""ajuda"", ""pula"" e ""parar""! ")
+            resposta = input(Fore.BLUE + "Qual sua resposta?!")  
 
         if resposta == 'ajuda' and ajudas > 0 and lista_ajudas[ide] == 0:
             ajudas -= 1 
@@ -62,7 +64,7 @@ while ide <= 9:
             if ajudas > 0:
                 print(f"Ok, lá vem ajuda! Você ainda tem {ajudas} ajudas!")
             else:
-                print("Ok, lá vem ajuda! ATENÇÃO: Você não tem mais direito a ajudas!")
+                print(Fore.LIGHTYELLOW_EX + "Ok, lá vem ajuda! ATENÇÃO: Você não tem mais direito a ajudas!")
             enter = input("Aperte ENTER para continuar...")
             print(dica)
             enter = input("Aperte ENTER para continuar...")
@@ -70,12 +72,12 @@ while ide <= 9:
 
 
         if resposta == 'ajuda' and ajudas > 0 and lista_ajudas[ide] == 1:
-            print("Não deu! Você já pediu ajuda nesta questão!")
+            print(Fore.RED + "Não deu! Você já pediu ajuda nesta questão!")
             enter = input("Aperte ENTER para continuar...")
             continue
         
         if resposta == 'ajuda' and ajudas == 0:
-            print("Não deu! Você não tem mais direito a ajuda!")
+            print(Fore.RED + "Não deu! Você não tem mais direito a ajuda!")
             enter = input("Aperte ENTER para continuar...")
             continue
 
@@ -84,19 +86,19 @@ while ide <= 9:
             if pulos >= 1:
                 print(f"Ok, pulando! Você ainda tem {pulos} pulos!")
             else:
-                print("Ok, pulando! ATENÇÃO: Você não tem mais direito a pulos!")
+                print(Fore.LIGHTYELLOW_EX + "Ok, pulando! ATENÇÃO: Você não tem mais direito a pulos!")
             enter = input("Aperte ENTER para continuar...")
             break 
 
         if resposta == 'pula' and pulos == 0:
-            print("Não deu! Você não tem mais direito a pulos!")
+            print(Fore.RED + "Não deu! Você não tem mais direito a pulos!")
             continue
         
         if resposta != "ajuda" and resposta != "pula":
 
             if resposta == resposta_correta:
                 print("")
-                print(f"Você acertou! Seu prêmio atual é de R$ {lista_dinheiro[ide - 1]:.2f}")
+                print(Fore.GREEN + f"Você acertou! Seu prêmio atual é de R$ {lista_dinheiro[ide - 1]:.2f}")
                 print("")
                 ide += 1 
                 if ide > 3 and ide < 6:
@@ -109,7 +111,7 @@ while ide <= 9:
                         print("HEY! Você passou para o nível DIFICIL!")
                 break
             elif resposta != resposta_correta:
-                print("Que pena! Você errou e vai sair sem nada :( ")
+                print(Fore.RED + "Que pena! Você errou e vai sair sem nada :( ")
                 exit()
             enter = input("Aperte ENTER para continuar...")
 
